@@ -170,3 +170,123 @@ A cloud deployment model defines where the data is stored and how customers inte
 
 </p>
 </details>
+
+---
+
+## Introduction to Azure
+
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
+### Learning Objectives
+
+* What Microsoft Azure is.
+* Deploy and configure a web server.
+* Learn how to scale up your server.
+* Interact with the web server using Azure Cloud Shell.
+
+### Tour of Azure services
+
+Azure is Microsoft's cloud computing platform.
+
+![img](./assets/introduction-to-azure/azure-services.png)
+
+It offers a lot of services of different nature:
+
+* **Compute**: helping in hosting applications and services.
+* **Networking**: for linking resources and providing access to applications.
+* Four main types of **storage**: Blob storage, File storage, Queue storage and Table storage (NoSQL store).
+* **Mobile**: to create services for iOS, Android an Windows.
+* **Databases** with global connectivity.
+* Building and hosting **Web** applications.
+* **IoT** data gathering and analysis.
+* Analytics solutions for **Big Data**.
+* **AI**: helping with creating and deploying ML models.
+* **DevOps** services for building, testing and releasing your applications.
+
+### Exercise - Create a website hosted in Azure
+
+> In this section, it is useful to directly access Azure course and work with the given [sandbox](https://docs.microsoft.com/en-us/learn/modules/welcome-to-azure/4-exercise-create-website). It does not charge your subscription.
+
+* **App Service**: HTTP-based service that enables you to build many types of web-based solutions without managing the infrastructure. With an App Service Plan we specify the compute resources and location for the web app.
+
+* **Azure Marketplace**: Online store that hosts certified and optimized applications to run in Azure, for example Wordpress in an App Service.
+
+### Exercise - Configure an App Service
+
+> In this section, it is useful to directly access Azure course and work with the given [sandbox](https://docs.microsoft.com/en-us/learn/modules/welcome-to-azure/5-exercise-configure-app-service). It does not charge your subscription.
+
+By looking at the performance graphs we can check if we need to perform any changes on the configuration of our app. When **scaling** a webb app, we could add network bandwidth, memory, storage or compute power.
+
+> **Azure Advisor** and **Azure Cost Management** are two services that help you optimize cloud spend. You can use these services to identify where you're using more than you need, and then scale back to the capacity you're actually using.
+
+Finally, notice that there are three categories of configurations plans to make it easier to define our setup for dev, prod or isolated workloads.
+
+> **Isolated**:	This category is ideal for workloads that require advanced networking and fine-grained scaling.
+
+### Exercise - Access an App Service using Azure Cloud Shell
+
+> In this section, it is useful to directly access Azure course and work with the given [sandbox](https://docs.microsoft.com/en-us/learn/modules/welcome-to-azure/6-exercise-cloud-shell). It does not charge your subscription.
+
+**Azure Cloud Shell** is a browser-based command-line experience for managing and developing Azure resources
+
+
+### Knowledge Check
+
+1. What is Azure?
+
+* Microsoft's cloud computing platform, which provides compute power, storage, and services over the Internet using a pay-as-you-go pricing model.
+* A single data center located in Redmond, Washington.
+* A hosting environment specifically for virtual machines
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Microsoft's cloud computing platform, which provides compute power, storage, and services over the Internet using a pay-as-you-go pricing model: Azure provides raw compute power and storage, as well as services to help you explore new software paradigms such as intelligent bots and mixed reality. 
+    </p>
+    </details>
+
+
+2. Which of the following is an example of an Azure application platform?
+
+* Azure App Service
+* Azure Load Balancer
+* Azure Table Storage
+* Azure Cache for Redis
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Azure App Service: Azure App Service is an HTTP-based service that enables you to build and host many types of web-based solutions without managing infrastructure. 
+    </p>
+    </details>
+
+3. When should you scale out your deployment?
+
+* When your application or service requires a more powerful CPU or more memory to run faster.
+* When you need additional virtual machines to speed up your application.
+* When you're using excess capacity that you don't need.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    When you need additional virtual machines to speed up your application: Scaling out means adding additional systems, such as virtual machines. For example, you might create many virtual machines configured in the same way and use a load balancer to distribute work across them. 
+    </p>
+    </details>
+
+
+</p>
+</details>
+
+---
+
+
