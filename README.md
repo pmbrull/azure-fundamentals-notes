@@ -4,6 +4,12 @@ Notes for the course [Azure Fundamentals](https://docs.microsoft.com/en-us/learn
 
 ## Principles of Cloud Computing
 
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
 ### Learning Objectives
 
 * Common cloud computing services
@@ -161,3 +167,6 @@ A cloud deployment model defines where the data is stored and how customers inte
     Platform as a Service (PaaS): Platform as a Service is the best choice here because the PaaS services handle the IT management tasks for you, so you can focus on writing code.
     </p>
     </details>
+
+</p>
+</details>
