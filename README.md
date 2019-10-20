@@ -75,3 +75,89 @@ The ability to do things at a lower cost per unit when operating at a larger sca
 ### Cloud deployment models
 
 A cloud deployment model defines where the data is stored and how customers interact with it.
+
+* **Public Cloud**: No local hardware - everything runs on the cloud provider. It implies the following **advantadges**:
+    * Scalability and agility, as you just rent more hardware when needing it.
+    * Pay-as-you-go pricing: no CapEx.
+    * No need for hardware maintenance.
+    * Minimal technical knowledge to set up and use.
+
+    However, there also are some **disadvantages**:
+    * Maybe you are not able to manage the hardware as you'd want.
+    * It's possible that some security requirements, policies or standards that cannot be met.
+    * Unique business requirements - such as maintaining a legacy application - might be hard to meet.
+
+* **Private Cloud**: You set up the whole datacenter, access policies and resources in the organization. This has some **advantages**:
+    * You can configure it so that it's possible to maintain any legacy app.
+    * Full control (and responsability) over security.
+    * Easier to meet security, policy and standards.
+
+    The **disadvantages** would be:
+    * Initial CapEx costs.
+    * Limited agility.
+    * High IT skills.
+
+* **Hybrid Cloud**: Combination of Public and Private clouds, which brings both worlds advantages which may be benefitial for some applications or configurations but also can end up being more expensive and hard to manage.
+
+### Types of Cloud Services
+
+* **IaaS**: Most flexible category, giving full control on the hardware that runs the app.
+    > **Shared repsonsibility model**: Ensuring that a service is running is a shared responsibility between the cloud provider (in charge of the infrastructure) and the customer (who needs to set up the proper configurations).
+    This is the usual scenario when migrating workloads - as you can mimic on-premise setup, testing and deployment for new apps and for storage, backup and recovery.
+
+* **PaaS**: Provides an environment for building, testing and deploying software applications, where one does not need to care about the underlying infrastructure. It is useful as it brings a framework that developers can work upon and also for analytics or BI tasks.
+
+* **SaaS**: Software hosted and managed for the customer, who acts as end user.
+
+![img](./assets/principles-of-cloud-computing/responsibility.png)
+
+
+### Knowledge Check
+
+1. Which term from the list below would be viewed as benefits of using cloud services?
+
+* Unpredictable costs
+* Elasticity
+* Local reach only
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Elasticity: Elasticity, Agility and Economies of scale are the correct answers, and would be seen as benefits that you can gain from using cloud services.
+    </p>
+    </details>
+
+
+2. Suppose you have two types of applications: legacy applications that require specialized mainframe hardware and newer applications that can run on commodity hardware. Which cloud deployment model would be best for you?
+
+
+* Public cloud
+* Private cloud
+* Hybrid cloud
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Hybrid cloud: A hybrid cloud is a public and private cloud combined. You can run your new applications on commodity hardware you rent from the public cloud and maintain your specialized mainframe hardware on-premises.
+    </p>
+    </details>
+
+3. You're developing an application and want to focus on building, testing, and deploying. You don't want to worry about managing the underlying hardware or software. Which cloud service type is best for you?
+
+* Infrastructure as a Service (IaaS)
+* Platform as a Service (PaaS)
+* Software as a Service (SaaS)
+
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Platform as a Service (PaaS): Platform as a Service is the best choice here because the PaaS services handle the IT management tasks for you, so you can focus on writing code.
+    </p>
+    </details>
