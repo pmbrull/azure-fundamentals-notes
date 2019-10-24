@@ -289,4 +289,132 @@ Finally, notice that there are three categories of configurations plans to make 
 
 ---
 
+## Core Cloud Services - Azure architecture and service guarantees
+
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
+### Learning Content
+
+* Physical infrastructure of Azure.
+* Understand the service level agreements provided by Azure.
+* Learn how to provide your own service level agreement for your apps.
+
+### Datacenters and Regions
+
+Cloud providers are built upon datacenters around the globe, where the physical hardware is located.
+
+**Regions** are geographical areas on the planet containing +1 datacenter. This partition into regions gives flexibility to provide services which are close - and thus ensure lower latency - to the user.
+
+### Geographies
+
+Azure divides the world into **geographies** that are defined by geopolitical boundaries. Each geography preserve data residency and compliance needs required by those countries. Moreover, they are fault-tolerant to withstand complete region failure. We have the following geographies:
+
+* Americas
+* Europe
+* Asia Pacific
+* Middle East and Africa
+
+Each region belongs to a single geography and has specific service availability, compliance, and data residency/sovereignty rules applied to it
+
+### Availability Zones
+
+To avoid single points of failure, cloud providers can help us create highly available applications through **Availability Zones**, which are separate datancenters within a region isolated from each other. If one zone goes down, the others keep working. The idea is that we can locate the resources in a zone and replicate in another.
+
+There are two types of services that support AZs:
+* Zonal Services: where the resource is pinned to a specific zone (e.g., a VM)
+* Zone-redundant Services: where the platform automatically replicates services accross zones (e.g., zone-redundant storage or SQL databases)
+
+### Region Pairs
+
+Availability zones are created using 1+ datacenters, and there is a minimum of three zones within a single region. To ensure that services can still be provided even if two datacenters go down, Azure created Region Pairs.
+
+Region Pairs are two region in the same geography but at least 300 miles away, which helps replicating resources accross the same geography and ensuring availabilty even in case of disaster. They are used to provide reliable services and data redudancy (geo-redundant).
+
+### Service-Level Agreements
+
+Formal documents called Service-Level Agreements (SLAs) capture the specific terms that define the performance standards that apply to Azure. These documents are specific for individual services and define what happens if a products fails to perform.
+
+There are three key characteristics of SLAs:
+
+* **Performance Targets**: such as uptime guarantees or connectivity rates.
+* **Uptime and Connectivity Guarantees**: which usually specify from 99.9% performance target commitment to 99.999%.
+* **Service Credits**: describing how Microsoft will respond if a service fails to perform its governing SLA's specification.
+
+### Compose SLAs accross services
+
+Combining SLAs from different services results in a *Composite SLA*. We can calculate this with probability calculus.
+
+For example having a Web App (99.95%) that redirects trafic to either a DB (99.99%) or a Queue (99.9%) gives us:
+
+* If the probability that both DB and queue are up is `1.0 − (0.0001 × 0.001) = 99.99999%`
+* Then, the composite SLA ends up as
+
+```bash
+99.95 × 99.99999 = ~99.95%
+```
+
+### Improve your app reliability
+
+*Application SLA* is the creation of your own SLA based on the workloads and services. We need to know our business requirements to provide a solution that best suits an overall SLA considering all components.
+
+Although rare, we also need to plan for entire service disruption. Here we have important aspects such as **Resiliency**, the ability of a system to recover from failures and continue to function. High availability and disaster recovery are two crucial components of resiliency. Howeher, the higher availability we want our application to be, the more expensive it will get as it will require more resources. This will also make it more complex in the overall architecture.
+
+
+### Knowledge Check
+
+1. Deploying an app can be done directly to what level of physical granularity? 
+
+* Region
+* Datacenter
+* Server rack
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Region: Azure organizes infrastructure around regions, which include multiple datacenters. You can pick the region you want resources deployed into. You can't select a specific datacenter or location within a datacenter.
+    </p>
+    </details>
+
+
+2. To use Azure datacenters that are made available with power, cooling, and networking capabilities independent from other datacenters in a region, choose a region that supports _________?
+
+* Geography distribution
+* Service-Level Agreements (SLAs)
+* Availability Zones
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Availability Zones: Availability Zones are datacenters set up to be an isolation boundary from others in the region, with their own power, cooling, and networking. If one zone in a region goes down, other Availability Zones in the region continue to work. 
+    </p>
+    </details>
+
+3. Application availability refers to what?
+
+* The service level agreement of the associated resource.
+* Application support for an availability zone.
+* The overall time that a system is functional and working.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    The time that a system is working is referred to as the application availability.
+    </p>
+    </details>
+
+
+</p>
+</details>
+
+---
 
