@@ -418,3 +418,101 @@ Although rare, we also need to plan for entire service disruption. Here we have 
 
 ---
 
+## Create an Azure Account
+
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
+
+### Accounts and subscriptions
+
+An **Azure account** is an identity in either Azure Active Directory (Azure AD), or a directory that is trusted by Azure AD, such as a work or school organization. It holds information such as:
+
+* Name, email, and contact preferences
+* Billing information such as a credit card
+
+You use an Azure account to sign in to the Azure website and administer or deploy services. Every Azure account is associated with one or more subscriptions.
+
+An **Azure subscription** is a logical container used to provision resources in Azure and is associated with Azure AD.
+
+There are four different subcription types:
+
+* Free
+* Pay-As-You-Go
+* Enterprise Agreement
+* Student
+
+### When to use multiple Azure subscriptions
+
+Sometimes it is useful to separate resources at a subcription level, as **billing** and **access control** happen at the subscription. We could use this to separate DEV and PROD environments for billing and security reasons or even to isolate some resources for compliance.
+
+Also, note that one could also transfer a subscription from one billing account to another.
+
+### Authenticate access with Azure Active Directory
+
+Azure AD is a modern identity provider that supports multiple authentication protocols. It is partitioned into separate **tenants**, which are dedicated and isolated instances of the Azure Active Directory service, owned and managed by an organization. A tenant may have multiple subscriptions (in a trust relationship), but a subscription only belongs to one tenant.
+
+![./assets/azure-account/4-azure-ad-tenant.png]
+
+Notice that each Azure AD tenant has an account owner. This is the original Azure account that is responsible for billing. You can add additional users to the tenant, and even invite guests from other Azure AD tenants to access resources in subscriptions.
+
+### Knowledge Check
+
+1. Which of the following defines an Azure subscription correctly?
+
+* Using Azure does not require a subscription
+* All Azure subscriptions are always free
+* An Azure subscription is a logical unit of Azure services that is linked to an Azure account
+* An account cannot have more than one subscription
+
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+     An Azure subscription is a logical unit of Azure services that is linked to an Azure account: Using Azure requires an Azure subscription. Azure offer free and paid subscription options to suit different customer needs and requirements, and an account can have one or more subscriptions, with different billing models and access-management policies applied to each . A subscription provides authenticated and authorized access to Azure products and services, and allows you to provision resources.
+    </p>
+    </details>
+
+
+2. True or False. Azure has free services you can use once you have an Azure subscription.
+
+* True - there are several free services available.
+* False - services are only free for the first 12 months.
+
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+     True: Azure has several free services you can use including Azure App Services, Functions, and Azure Kubernetes containers.
+    </p>
+    </details>
+
+3. Billing in Azure is ______________
+
+* Annually for each Azure account based on usage.
+* Monthly for each Azure subscription based on usage.
+* Monthly for each Azure account based on usage.
+* Daily for each Azure subscription based on usage.
+
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Billing is performed monthly for each subscription in the account, based on the resource usage.
+    </p>
+    </details>
+
+</p>
+</details>
+
+---
+
