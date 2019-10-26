@@ -516,3 +516,209 @@ Notice that each Azure AD tenant has an account owner. This is the original Azur
 
 ---
 
+## Core Cloud Services - Manage services with the Azure portal
+
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
+### Azure management options
+
+There is a broad selection of tools that can be used to configure and manage Azure.
+
+
+* **Azure portal** for interacting with Azure via a Graphical User Interface (GUI). It uses a **blades model** for navigation, where a blade is a slide-out panel containing the UI for a single level in a navigation sequence. The initial dashboard can be configured with a tile system to show the resources or metrics that the user is interested in the most. Dashboards can be created, cloned or deleted and configured using the *dashboard.json* file.
+* **Azure PowerShell** and Azure Command-Line Interface (CLI) for command line and automation-based interactions with Azure.
+* **Azure Cloud Shell** for a web-based command-line interface.
+* **Azure mobile app** for monitoring and managing your resources from your mobile device.
+
+Moreover, it is good to know that one can use preview resources (by searching for "preview") and get notified about General Availability (GA) releases in the "What's new" link.
+
+### Knowledge Check
+
+1. An Azure dashboard is stored as which type of file?
+
+* XML
+* JSON
+* PNG
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Azure dashboards are stored as JSON files, which allow them to be uploaded and downloaded to share with other members of the Azure directory.
+    </p>
+    </details>
+
+2. Azure Advisor provides advice on which of these topics:
+
+* Creating an Azure account
+* Best practices and security for your services
+* Using the Azure portal effectively
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Azure Advisor is a free service built into Azure that provides recommendations on high availability, security, performance, and cost.
+    </p>
+    </details>
+
+
+3. True or false: Azure Cloud Shell is an interactive, browser-accessible shell for managing Azure resources?
+
+* True
+* False
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Azure Cloud Shell is an interactive shell for managing Azure resources. You can control and administer all of your Azure resources in the current subscription through a command-line interface built right into the portal.
+    </p>
+    </details>
+
+
+</p>
+</details>
+
+---
+
+## Core Cloud Services - Azure compute options
+
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
+### Learning objectives
+
+* Identify compute options in Azure.
+* Select compute options that are appropriate for your business.
+
+### Essential Azure compute concepts
+
+Azure compute is an on-demand computing service for running cloud-based applications in the form of:
+
+* **Virtual Machines**: software emulations of physical computers. They include a virtual processor, memory, storage and networking resources. They need to run on an OS.
+* **Containers**: virtualization environment for running applications. They do not need any OS, instead they just include the minimum necessary dependencies to run the application and use the existing host OS running the container.
+* **App Service**: PaaS offering in Azure designes to host web-oriented applications.
+* **Serverless Computing**: is a cloud-hosted execution environment that runs your code but abstracts the underlying hosting environment.
+
+### Explore Azure Virtual Machines
+
+They are a useful choice when we need
+* Total control over the operating system (OS)
+* The ability to run custom software, or
+* To use custom hosting configurations
+
+Some use examples could be during testing and development, when running applications in the cloud without the need of creating the infrastructure, when extending your datacenter to the cloud or during disaster recovery to being able to run business critical applications.
+
+Moreover, when migrating to the cloud, you could use a full IaaS approach to "lift and shift" your applications, copying your physical server configurations.
+
+#### Scaling VMs
+
+Grouping VMs together can bring the benefits of high availability, scalability and redundancy:
+* **Availability sets**: logical grouping of two or more VMs to keep applications up during maintenance. This could mean that some patches or upgrades needed to be done on the machine (planned maintenance) or due to hardware failure in the datacenter (unplanned maintenance). The group of VMs that share common hardware are in the same *fault domain* - rack of servers.
+
+    With an availability set you get up to three fault domains that each have a server rack with dedicated power and network resources and five logical update domains, which indicate the group of VMs that are being rebooted / patched at the same time.
+
+    ![img](./assets/azure-compute-options/availability-sets.png)
+
+* **Scale sets**: let you create and manage a group of identical, load balanced VMs in order to provide high availability apps and increase / decrease the number of VMs depending on demand.
+
+* **Azure Batch**: enables large-scale job scheduling and compute management with the ability to scale to tens, hundreds or thousands of VMs. Batch starts a pool of VMs, installs applications and staging data, runs the jobs, identifies failures and requeues works, scales down the pool as work completes.
+
+### Explore Containers in Azure
+
+Azure supports Docker containers. There are several ways to manage containers in Azure:
+
+* **Azure Container Instances (ACI)**: PaaS offering that allows to upload the containers and execute them directly with automatic elastic scale.
+* **Azure Kubernetes Service (AKS)**: Complete orchestration service (automating, managing and interacting) for containers with distributes architectures with multiple containers.
+
+Containers are often used to create solutions using a **microservice architecture**. This architecture is where you break solutions into smaller, independent pieces, which allows to scale and upgrade the differents parts independently.
+
+### Explore Azure App Service
+
+PaaS service that allows you to focus on the website and API logic while Azure handles the infrastructure to run and scale your web applications. You pay for the resources used by processing depending on the App Service Plan chosen, which determines how much hardware is devoted to your host.
+
+There are different types of web apps:
+
+* **Web Apps**: which supports web app hosting.
+* **API Apps**: you can build REAS-based Web APIs with Swagger support and the ability to package and publish your API in the Azure Marketplace.
+* **Web Jobs**: allow you to run a program or scripts in the same context as a web app,API app or mobile app. They can be scheduled or run by a trigger.
+* **Mobile app back-ends**: lets one quickly build the backend for iOS or Android apps. You can store mobile app data in cloud DBs, authenticate customers, send push notifications and execute custom backend logic.
+
+### Explore Serverless computing in Azure
+
+Serverless computing encompasses three ideas:
+* **Abstraction of servers**: where you simply deploy your code which then runs with high availability.
+* **Event-driven scale**: Which is an excellent fit for workloads that respond to events. The platform automatically scales. Events can be defined by a variety of triggers.
+* **Micro-billing**: Where you pay only for the time that your code is running.
+
+Azure has two implementations of serverless compute:
+
+* **Azure Functions**: which can execute code in almost any modern language. Furthermore, Azure Functions can be either stateless (the default) where they behave as if they're restarted every time they respond to an event), or stateful (called "Durable Functions") where a context is passed through the function to track prior activity.
+* **Azure Logic Apps**: which execute workflows designed to automate business scenarios based on an event. They can be defined via UI or JSON files. While Azure Functions can run locally, Logic Apps only run in the cloud.
+
+### Kwnowledge Check
+
+
+1. Suppose you have an existing application running locally on your own server. You need additional capacity but prefer to move to Azure instead of buying upgraded on-premises hardware. Which compute option would likely give you the quickest route to getting your application running in Azure?
+
+* Serverless computing
+* Containers
+* Virtual machines
+
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    You have full control over the VM setup, so you can configure it to match your on-premises server. This control will allow your existing application to run on the Azure VM with little or no change.
+    </p>
+    </details>
+
+2. Imagine that you work on a photo-sharing application that runs on millions of mobile devices. Demand is unpredictable because you see a spike in usage whenever a locally or nationally significant event occurs. Which Azure compute resource is the best match for this workload?
+
+* Serverless computing
+* Containers
+* Virtual machines
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    The photo-sharing app is event driven and needs to handle unpredictable demand. Serverless computing is a good fit for this situation because it is event-based and can scale instantly to process spikes in traffic. It should also be a cost-effective choice because you will pay for compute time only when processing user data.
+    </p>
+    </details>
+
+
+3. The compute options give you different levels of control over the configuration of the environment in which your application runs. Which of the following lists the compute options in order from "most control" to "least control"?
+
+* Serverless computing, containers, virtual machines
+* Containers, serverless computing, virtual machines
+* Virtual machines, containers, serverless computing
+
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Virtual machines give you full control over the environment. Containers give you limited control. Serverless computing does not allow you to do any infrastructure configuration.
+    </p>
+    </details>
+
+</p>
+</details>
+
+---
