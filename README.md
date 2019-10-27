@@ -722,3 +722,116 @@ Azure has two implementations of serverless compute:
 </details>
 
 ---
+
+## Azure data storage options
+
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
+### Learning content
+
+* Survey the data storage options in Azure
+* Discover how Azure data storage can meet your business demands
+* Compare Azure data storage with on-premises storage
+
+### Benefits of using Azure to store data
+
+* **Automated backup and recovery**: mitigating the risk of losing data.
+* **Replication across the globe**: protecting your data.
+* **Support for data analytics**
+* **Encryption capabilities**: making it secure. You also have control over who can access the data.
+* **Multiple data types**: for both relational and NoSQL.
+* **Data storage in virtual disks**: with up to 8TB capacity per disk.
+* **Storage Tiers**: to prioritize access to data based on frequently used vs. rarely used information.
+
+### Types of Data
+
+* **Structured data**: data that adhers to a schema so all of it has the same fields or properties. Also known as relational data.
+* **Semi-structured data**: which does not neatly fit into tables, rows and columns. Uses *keys* to organize and provide a hierarchy. Also known as non-relational or NoSQL data.
+* **Unstructured data**: No structure means no restrictions. For example, a blob can hold a PDF, JPG, JSON, video...
+
+### How Azure data storage can meet your business storage needs
+
+* **Azure SQL**: As a Database as a Service (DaaS), it gives the latest stable SQL server engine in a high performance, reliable, fully managed and secure way.
+* **Azure Cosmos DB**: Distributed database service which supports schema-less data. This means that it supports applications with changing data.
+* **Azure Blob Storage**: It is unstructured, so no restrictions applied. Blobs are scalable and it's easy to rowk with blobs with applications. They can manage thousands of simultaneous uploads and massive amounts of data.
+* **Azure Data Lake Storage**: Large repository hosting both structured and unstructured data which allows to perform analytics on the data. Combines the scalability and cost benefits of object storage with the reliability and performance of the Big Data file system capabilities.
+* **Azure Files**: Offers fully managed file shares in the cloud that are accessible via the industry standard Server Message Block (SMB) protocol. Machines can mount these to have access to the data.
+* **Azure Queue**: Service for storing large numbers of message. It also can be used to help build flexible applications and separate functions for better durability across large workloads and provides asynchronous message queueing for communication between application components.
+* **Disk Storage**: Disk storage provides disks for virtual machines, applications, and other services to access and use as they need, similar to how they would in on-premises scenarios.
+* **Storage Tiers**: Azure offers three storage tiers for blob object storage:
+    * Hot storage tier: optimized for storing data that is accessed frequently.
+    * Cool storage tier: optimized for data that are infrequently accessed and stored for at least 30 days.
+    * Archive storage tier: for data that are rarely accessed and stored for at least 180 days with flexible latency requirements.
+* **Encryption and replication**: Azure provides security and high availability to your data through encryption and replication features:
+    * Encryption for storage services: We can choose between SSE (Azure Storage Service Encryption) which encrypts data before writing and decrypts when reading transparently to the user or Client-side encryption, where the data is already encrypted by the client libraries.
+    * Replication for storage availability: ensuring that data is durable and available.
+
+### Comparison between Azure data storage and on-premises storage
+
+Storing data in the cloud gives the following benefits vs. on prem solutions:
+
+* **Cost effectiveness**: as we don't need an upfront expense and just pay-as-you-go.
+* **Reliability**: Azure data storage provides data backup, load balancing, disaster recovery, and data replication as services to ensure data safety and high availability without as much investment as in on premise.
+* **Multiple storage** types depending on your needs.
+* The **agility** to change the technologies used.
+
+### Kwnowledge Check
+
+
+1. Suppose you work at a startup with limited funding. Why might you prefer Azure data storage over an on-premises solution?
+
+* To ensure you run on a specific brand of hardware, which will let you form a marketing partnership with that hardware vendor.
+* The Azure pay-as-you-go billing model lets you avoid buying expensive hardware.
+* To get exact control over the location of your data store.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    The Azure pay-as-you-go billing model lets you avoid buying expensive hardware: There are no large, up-front capital expenditures (CapEx) with Azure. You pay monthly for only the services you use (OpEx).
+    </p>
+    </details>
+
+2. Which of the following situations would yield the most benefits from relocating an on-premises data store to Azure?
+
+* Unpredictable storage demand that increases and decreases multiple times throughout the year.
+* Long-term, steady growth in storage demand.
+* Consistent, unchanging storage demand.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Unpredictable storage demand that increases and decreases multiple times throughout the year: Azure data storage is flexible. You can quickly and easily add or remove capacity. You can increase performance to handle spikes in load or decrease performance to reduce costs. In all cases, you pay for only what you use.
+    </p>
+    </details>
+
+
+3. A newly released mobile app using Azure data storage has just been mentioned by a celebrity on social media, seeing a huge spike in user volume. To meet the unexpected new user demand, what feature of pay-as-you-go storage will be most beneficial?
+
+* The ability to provision and deploy new infrastructure quickly
+* The ability to predict the service costs in advance
+* The ability to meet compliance requirements for data storage
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    The ability to provision and deploy new infrastructure quickly: As the user demand increases, the agility to deploy new servers or services as needed can help scale to meet the increased user load.
+    </p>
+    </details>
+
+</p>
+</details>
+
+</p>
+</details>
+
+---
