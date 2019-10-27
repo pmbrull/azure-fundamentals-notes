@@ -831,6 +831,403 @@ Storing data in the cloud gives the following benefits vs. on prem solutions:
 </p>
 </details>
 
+---
+
+## Azure networking options
+
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
+### Learning Objectives
+
+* How an Azure virtual network provides secure network communication among resources such as virtual machines and other networks
+* What high availability and resiliency mean and how Azure Load Balancer can increase resiliency within a single geographic region
+* What latency is and how Traffic Manager helps reduce network latency and provides resiliency across geographic locations
+
+### Deploy your site to Azure
+
+#### Using an N-tier architecture
+
+This approach divides an application into two or more logial tiers. A higher tier can access services from a lower tier, but a lower tier should never access a higher tier. It allows for reusability of the different pieces and simplifies maintenance.
+
+A *three-tier* architecture is often used in web applications:
+
+![img](./assets/azure-networking/three-tier.png)
+
+This also allows for fine-grained securization of the different pieces with inbound rules.
+
+#### Your e-commerce site running on Azure
+
+Let's break down some definitions:
+
+* **Region**: one or more Azure datacenters within a specific geographic location.
+* **Virtual Network**: logically isolated network on Azure, allowing resources to securely communicate with each other, to the internet and on-premise networks. A virtual network is scoped to a single region, but multiple networks from different regions can be connected together by peering.
+* **Subnets** are an internal logical organization of a virtual network so that you can organize and secure your resources in discrete sections.
+* **Network Security Group** or NSG allows or denies inbound network traffic to your Azure resources. It can be seen as a cloud-level firewall.
+
+
+### Scale with Azure Load Balancer
+
+* **Availability** refers to how long your service is up and running without interruption. **High Availability** refers to a service that is up and running for a long period of time.
+* **Resiliency** refers to a system's ability to stay operational during abnormal conditions such as natural disasters, maintenance (planned or unplanned), spikes in traffic and malicious threads.
+* **Load Balancer** distributes traffic evenly among each system in a pool in order to achieve high availability and resiliency.
+* **Azure Application Gateway** is a load balancer designed for web applications. It uses Load Balancer at the transport level (TCP) and applies sophisticated URL-based routing rules to support several advanced scenarios. The image below shows an application layer (OSI layer 7) load balancing, as it understands HTTP messages.
+
+![img](./assets/azure-networking/appgateway.png)
+
+    Some benefits of using an App Gateway over a LB are:
+    * Cookie affinity, when you want to keep a user session on the same backend server.
+    * SSL termination: pass uncrypted traffic to the backend. It also support full end-to-end encryption if you need it.
+    * Web application firewall, as it supports a sophisticated firewall (WAF).
+    * URL rule-based routes: allows you to route traffic based on URL patterns, source IP address and port to destination IP address and port. This is helpful when setting up a content delivery network.
+    * Rewrite HTTP headers to add or remove information of outbound HTTP headers.
+
+* A **content delivery network** (CDN) is a distributed network of servers that can efficiently deliver web content to users. It is useful to get content to users in their local region to minimize latency.
+
+* **DNS** or Domain Name System is a way to map user-friendly names to their IP addresses.
+
+### Reduce latency with Azure Traffic Manager
+
+**Latency** is the time it takes for data to travel over the network (in ms). Contrary, **bandwidth** refers to the amount of data that can fir on the connection. One of the biggest factors affecting latency is distance.
+
+Thus, one way to reduce latency is to provide different copies of a Web App in different regions and then use **Azure Traffic Manager** to route users to the closest endpoint. It uses the DNS server that's closer to the user.
+
+![img](./assets/azure-networking/traffic-manager.png)
+
+You could even connect Traffic Manager to an existing on-premise network.
+
+
+### Knowledge Check
+
+1. What is an Azure region?
+
+* One or more Azure data centers within a specific geographical location.
+* A way of breaking networks into smaller networks.
+* Firewall rules which define the flow of traffic in and out of Azure.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    ne or more Azure data centers within a specific geographical location.: Azure regions help you deliver your apps and services closest to your users. West US and North Europe are examples.
+    </p>
+    </details>
+
+2. Which of the following is true about virtual networks?
+
+* You configure virtual networks through software.
+* A virtual network accepts network traffic on all ports. You configure the firewall through virtual machines.
+* Virtual networks are always reachable from the internet.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    You configure virtual networks through software: Software enables you to treat a virtual network just like your own network. Azure maintains the physical hardware for you.
+    </p>
+    </details>
+
+3. Which is true about Azure Load Balancer?
+
+* You must use Azure Load Balancer if you want to distribute traffic among your virtual machines running in Azure.
+* Azure Load Balancer works with internet-facing traffic only.
+* Azure Load Balancer distributes traffic among similar systems, making your services more highly available.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Azure Load Balancer distributes traffic among similar systems, making your services more highly available: If one system is unavailable, Azure Load Balancer stops sending traffic to it. It then directs traffic to one of the responsive servers.
+    </p>
+    </details>
+
+4. What is network latency?
+
+* The amount of data that can fit on the connection.
+* The distance data must travel to reach its destination.
+* The time it takes for data to travel over the network.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Latency measures the time it takes for data to reach its destination. Latency is typically measured in milliseconds.
+    </p>
+    </details>
+
+5. How does Azure Traffic Manager reduce latency?
+
+* It chooses only the fastest networks between endpoints.
+* It chooses the endpoint that's closest to the user's DNS server.
+* It caches content, similar to how content delivery networks work.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Choosing the server that's closest to the user is a good way to reduce latency.
+    </p>
+    </details>
+
+</p>
+</details>
+
+---
+
+## Security, responsibility and trust in Azure 
+
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
+### Learning Objectives
+
+
+* Security responsibility is shared with Azure
+* Identity management provides protection, even outside your network
+* Encryption capabilities built into Azure can protect your data
+* To protect your network and virtual networks
+
+### Cloud security is a shared responsibility
+
+* In IaaS, you are responsible of patching and securing the OS, software and network.
+* In PaaS, you need to secure your application but not the infrastructure.
+* With SaaS, almost everything is outsourced.
+
+However, you are always responsible for __data, endpoints, accounts and access management__.
+
+#### A layered approach to security
+
+Defense in depth is a strategy that employs a series of mechanisms to slow the advance of an attack aimed at acquiring unauthorized access to information. After a layer is breached, the next is already in place to prevent further exposure. This way there is not just a single layer of protection.
+
+![img](./assets/azure-security/defense_in_depth_layers_small.png)
+
+* **Data**: Attackers usually are after data. It's the user's responsibility to control data access and security.
+* **Application**: Development teams must ensure app security and avoid vulnerabilities.
+* **Compute**: Secure access to VMs and implement endpoint protection.
+* **Networking**: Secure the resources communication.
+* **Perimeter**: Protect from network-based attacks such as DDoS. Use firewalls to identify and alert on malicious attacks.
+* **Identify and access**: ensure identities are secure and grant access only to what is needed.
+* **Physical Security**: Physical buildings and access control.
+
+### Get tips from Azure Security Center
+
+Is a monitoring service that provides threat protection across all of your services both in Azure, and on-premises, which continuously monitors services and resources and provides security recommendations. Has both free and standard tiers.
+
+#### Usage Scenarios
+
+1. You can use Security Center for incident response to detect (first indication of event investigation), asses (initial analysis to obtain information about the suspicious activity) and diagnose (to conduct a technical investigation and identify containment, mitigation and workaround strategies).
+1. Use Security Center recommendations to enhance security by configuring security policies, which define a set og controls to specified subscriptions or resource groups.
+
+### Identity and access
+
+* **Authentication** is the process of establishing the identity of a person or service looking to access a resource.
+* **Authorization** is the process of establishing what level of access an authenticated person or service has.
+
+#### What is Azure Active Directory?
+
+Azure AD is a cloud-based identity service. It provides services such as
+
+* **Authentication** to identify access to applications and resources.
+* **Single-Sign-On** (SSO), which enables users to remember only one ID and password accross multiple applications.
+* **Application Management**, where you can manage your cloud and on-premise apps using Azure AD Application Proxy.
+* **Business to business (B2B) Identity services**: Manage your guest users and external partners while maintaining control over your own corporate data Business-to-Customer (B2C) identity services.
+* **Device Management**. Manage how your cloud or on-premises devices access your corporate data.
+
+#### Multi-factor authentication
+
+MFA provides addictional security for your identities by requiring two or more elements for full authentication. These elements fall into three categories:
+* Something you know - password or the answer to a security question.
+* Something you posses - mobile app that receives a notification or token.
+* Something you are - biometric property.
+
+#### Providing identities to services
+
+Usually, and against best practices, services credentials are embedded into not securized configuration files, which is a risk to exposure. Azure AD addresses this problem through two methods: service principals and managed identities for Azure services.
+
+* An **Identity** is just a thing that can be authenticated, such as users, applications or servers.
+* A **Principal** is an identity acting with certain roles or claims (such as `sudo`).
+* A **Service Principal** is an identity that is used by a service or applications. Like other identities, it can be assigned roles.
+
+Creating Service Principals can be tedious. That's why Managed identites for Azure services are much easier and will do most of the work for you. A managed identity can be instantly created for any service supporting it, which automatically creates an account on AD and the infrastructure will automatically take care of authenticating the service and managing the account.
+
+#### Role-based access control
+
+Roles are sets of permissions, like "Read-only" or "Contributor", that users can be granted to access an Azure service instance. Roles can be assigned at different levels and can be inherited:
+
+Management Group > Subcription > Resource Group > Resource
+
+#### Privileged Identity Management
+
+It is an additional paid-on offering that provides oversight of role assignments, self-service and just-in-time role activiation and Azure AD and resources access reviews.
+
+### Encryption
+
+Encryption is the process of making data unreadable and unusable to unauthorized viewers.
+
+* **Symmetric Encryption** uses the same key to encrypt and decrypt data.
+* **Asymmetric Encryption** uses a public key and private key pair, for example in SSH connections.
+
+Encryption is approached in two ways:
+
+* **Encryption at rest**: stored data is encrypted (in a disk or db), which makes the data unreadable without the keys and secrets to decrypt it.
+* **Encryption in transit**, such as HTTPS, ensures that data is safe while traveling from one location to another. This gives protection to outside observers.
+
+#### Encryption on Azure
+
+* **Azure Storage Service Encryption** encrypts data at rest.
+* **Azure Disk Encryption** helps encrypt VMs disks.
+* **Transparent data encryption (TDE)** protects data in Azure SQL databases and Data Warehouses. It uses a symmetric encryption key.
+
+Moreover, we need to makesure that keys themselves are secure. For this, Azure bring **Azure Key Vault**, which helps to manage both keys and secrets which are accessible via API. Also, it makes it easier to manage certificates (SSL/TSL) and sotre secrets backed by hardware security models (HSMs).
+
+Some of the benefits of Azure KV are that you are centralizing application secrets which helps to control their distribution; secrets and keys are secure and you can monitor access and use; simplified administration of application secrets and is a service tightly integrated with other Azure services.
+
+### Overview of Azure certificates
+
+Transport Layer Security (TLS) is the basis for encryption of website data in transit. These certificates, though, have a lifecycle and require administration.
+
+#### Types of certificates
+
+* **Service Certificates** used for cloud services and enable secure communication and from the service. They can be managed separately from the service itself.
+* **Management Certificates** are used for authenticating with the management API. They can be used to automate configuration and deployment of various Azure services. These are not directly related to any cloud service.
+
+All of these certificates can be stored in Azure Key Vault as any other secret.
+
+### Protect your network
+
+A common theme is an emphasis of a layered approach to security.
+
+A **firewall** is a service that grants server access based on the originating IP of the request. To provide inbound protection at the perimeter one can use:
+* **Azure Firewall** which protects Azure Virtual Network resources.
+* **Azure Application Gateway** which is a Load Balancer with a Web Application Firewall included. This protects from common, known vulnerabilities in websites. It is specifically designed to protect HTTP traffic.
+* **Network virtual appliances (NVAs)** are ideal for non-HTTP services. Similar to hardware firewall appliances.
+
+#### Stopping Distributed Denial of Service (DDos) attacks
+
+These attacks attemp to overwhelm a network resources by sending requests. Azure uses the scale and elasticity of Microsoft's global network to mitigate DDoS attacks.
+
+#### Controlling the traffic inside your virtual network
+
+Network Security Groups allow you to filter network traffic to and from Azure resources in an Azure virtual network. They can contain multiple inbound and outbound rules to filter traffic. You can even totally remove public internet access to some resources.
+
+VPN (Virtual Private Network) can be used to integrate on-premises network with Azure networks with secure communication. One could even use Azure **ExpressRoute** to connect cloud services over a private circuit instead of the public internet.
+
+### Protect your shared documents
+
+Microsoft Azure Information Protection (sometimes referred to as AIP) is a cloud-based solution that helps organizations classify and optionally protect documents and emails by applying labels.
+
+### Azure Advanced Threat Protection
+
+Azure Advanced Threat Protection (Azure ATP) is a cloud-based security solution that identifies, detects, and helps you investigate advanced threats, compromised identities,and malicious insider actions directed at your organization. Azure ATP is available as part of the Enterprise Mobility + Security E5 suite (EMS E5) and as a standalone license.
+
+### Understand Security Considerations for Application Lifecycle Management Solutions
+
+The Microsoft Security Development Lifecycle (SDL) introduces security and privacy considerations throughout all phases of the development process. It helps developers build highly secure software, address security compliance requirements, and reduce development costs. There are important security practices that should be followed:
+
+* **Provide training**, as security is everyone's job.
+* **Define security Requirements** including legal and industry requirements, internal standards and coding best practices.
+* **Define metrics and compliance reporting** to ensure a minimum level of security quality.
+* **Perform threat modeling** in environment with a meaningful security risk.
+* **Emable design requirements** to help engineers implement more secure features.
+* **Define and use cryptography standards** to ensure that all data is secure from unintended disclosure and alteration.
+* **Manage security risks from using third-party components**, as they can be a possible vulnerability.
+* Define a list of **Approved tools**.
+* **Perform Static Analysis Security Testing** to test code before compilation.
+* **Perform Dynamic Analysis Security Testing** to test the final packaged software.
+* **Perform penetration testing** simulating the actions of a hacker.
+* **Establish a standard incident response process** to address how to answer to new threats.
+
+### Knowledge Check
+
+1. Cloud security is a shared responsibility between you and your cloud provider. Which category of cloud services requires the greatest security effort on your part?
+
+* Infrastructure as a service (IaaS)
+* Platform as a service (PaaS)
+* Software as a service (SaaS)
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    IaaS: At this level, the cloud provider provides physical security to compute resources. However, it's your responsibility to patch and secure your operating systems and software, as well as configure your network to be secure.
+    </p>
+    </details>
+
+1. Which of these helps you most easily disable an account when an employee leaves your company?
+
+* Enforce multi-factor authentication (MFA)
+* Monitor sign-on attempts
+* Use single sign-on (SSO)
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    SSO centralizes user identity, so you can disable an inactive account in a single step.
+    </p>
+    </details>
+
+1. Which of these is the strongest way to protect sensitive customer data?
+
+* Encrypt data as it sits in your database
+* Encrypt data as it travels over the network
+* Encrypt data both as it sits in your database and as it travels over the network
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Encrypting your data at all times, both as it sits in your database and as it travels over the network, minimizes the opportunity for an attacker to access your data in plain text.
+    </p>
+    </details>
+
+1. There has been an attack on your public-facing website, and the application's resources have been overwhelmed and exhausted, and are now unavailable to users. What service should you use to prevent this type of attack?
+
+* DDoS protection
+* Azure Firewall
+* Network Security Group
+* Application Gateway
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    DDoS protection is the correct answer, because it will help prevent DDoS attacks.
+    </p>
+    </details>
+
+1. You want to store certificates in Azure to centrally manage them for your services. Which Azure service should you use?
+
+* AIP
+* Azure AD
+* Azure Key Vault
+* Azure ATP
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Azure Key Vault is the correct answer, because it is a centralized cloud service for storing application secrets, referred to as a secret store.
+    </p>
+    </details>
+
+
 </p>
 </details>
 
