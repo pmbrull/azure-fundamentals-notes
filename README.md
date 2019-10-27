@@ -1232,3 +1232,169 @@ The Microsoft Security Development Lifecycle (SDL) introduces security and priva
 </details>
 
 ---
+
+## Apply and monitor infrastructure standards with Azure Policy
+
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
+### Learning Content
+
+* Apply policies to control and audit resource creation
+* Learn how role-based security can fine-tune access to your resources
+* Understand Microsoft's policies and privacy guarantees
+* Learn how to monitor your resources
+
+### Define IT compliance with Azure Policy
+
+Your **policies** will enforce your rules for created resources, so your infrastructure stays compliant with your corporate standards, cost requirements, and service-level agreements (SLAs) you have with your customers.
+
+**Azure Policy** is an Azure service you use to create, assign and, manage policies. This service evaluates resources looking for noncompliance with assigned policies.
+
+> Azure Policies vs. RBAC: RBAC (role based access control) focuses on user actions at different scopes. Azure Policy focuses on resource properties during deployment and for already existing resources. It is a default-allow-and-explicit-deny system.
+
+#### Creating a policy
+
+To create a policy you need to
+
+* Create a policy definition: it expresses what to evaluate and what action to take. For example, ensure all public websites are secured with HTTPS. A policy definition is represented as a JSON file. This can be done via Azure portal or Powershell.
+* Assign a definition to a scope of resources. The policy will then need to be assigned to a resource orgroup of resources (with child inheritance). This can be done by using Azure portal, Powershell or Azure CLI.
+* View policy evaulation results: it can allow a resource to be created even if it doesn't pass validation.
+
+Then, in the Policy resource in the portal we can check for non compliant resources.
+
+> OBS: Requests to create or update a resource through Azure Resource Manager are evaluated by Azure Policy first, evaluating all of them against each definition.
+
+### Organize policy with initiatives
+
+An initiative definition is a set or group of policy definitions to help track your compliance state for a larger goal. They are also assigned to a specific scope.
+
+### Enterprise governance management
+
+Access management occurs at the Azure subscription level. This allows an organization to configure each division of the company in a specific fashion based on their responsibilities and requirements.
+
+Azure Management Groups are containers for managing access, policies, and compliance across multiple Azure subscriptions with child inheritance.
+
+### Define standard resources with Azure Blueprints
+
+**Azure Blueprints** enables cloud architects and central information technology groups to define a repeatable set of Azure resources that implements and adheres to an organization's standards, patterns, and requirements. It is adeclarative way to orchestrate the deployment of resource templates and artifacts.
+
+It is based on defining "What should be deployed" and then keeping an audit of "what was deployed".
+
+#### How is it different from Resource Manager templates?
+
+The Azure Blueprints service is designed to help with environment setup. On the other hand, ARM templates are just a definition of resources that we may want to deploy that does not exist natively in Azure. Each blueprint can consist of zero or more ARM template artifacts.
+
+#### How it's different from Azure Policy
+
+A blueprint is a package of sets of standards, which can include policies in it. Policies are just used to audit and control resource usage.
+
+### Explore your service compliance with Compliance Manager
+
+Governing your own resources and how they are used is only part of the solution when using a cloud provider. You also have to understand how the provider manages the underlying resources you are building on. We have full transparency with four sources:
+
+* **Microsoft Privacy Statement**: explains what personal data Microsoft processes, how Microsoft processes it, and for what purposes.
+* **Microsoft Trust Center**: website resource containing information and details about how Microsoft implements and supports security, privacy, compliance, and transparency in all Microsoft cloud products and services. It includes information such as recommended resources, organizational roles and direct guidance, if needed.
+* **Service Trust Portal**: hosts the Compliance Manager service, and is the Microsoft public site for publishing audit reports and other compliance-related information relevant to Microsoft’s cloud services. It helps your organization maintain track and compliance with standards such as ISO or GDPR, access Microsoft's audit reports, compliance guides and trust documents.
+* **Compliance Manager**: dashboard that provides a summary of your data protection and compliance stature and recommendations for improvement.
+
+### Monitor your service health
+
+Azure provides two primary services to monitor the health of your apps and resources.
+
+* **Azure Monitor**: helps you understand how your applications are performing and proactively identifies issues affecting them and the resources they depend on. It gets and analyzes data from your resources. Some of the data sources are Activity Logs of your applications, Event Logs, Application Insights, Azure monitor for containers or VMs... Moreover, it proactively notifies of critical conditions using **Alerts**. These can be configured based on metrics to have almost real-time responses. Also, Azure Monitor uses **Autoscale** to make sure that you always have enough resources to run your applications based on your rules and metrics. All of this information can be integrated with visualization tools.
+
+* **Azure Service Health**: suite of experiences that provide personalized guidance and support when issues with Azure services affect you. It is composed of the following views:
+    * Azure status provides a global view of the health state of Azure services.
+    * Service Health gives a customizable dashboard that tracks the state of your Azure services in the regions where you use them.
+    * Resource Health helps you diagnose and obtain support when a service issue affects your resources. It helps you understand if an SLA was violated.
+
+
+### ### Knowledge Check
+
+1. True or false: You can download published audit reports and other compliance-related information related to Microsoft’s cloud service from the Service Trust Portal
+
+* True
+* False
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    True: You can download published audit reports and other compliance-related information related to Microsoft’s cloud service from the Service Trust Portal.
+    </p>
+    </details>
+
+1. Which Azure service allows you to configure fine-grained access management for Azure resources, enabling you to grant users only the rights they need to perform their jobs?
+
+* Locks
+* Policy
+* Initiatives
+* Role-based Access Control
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Role-based access control (RBAC) provides fine-grained access management for Azure resources, enabling you to grant users only the rights they need to perform their jobs. RBAC is provided at no additional cost to all Azure subscriber.
+    </p>
+    </details>
+
+1. Which Azure service allows you to create, assign, and, manage policies to enforce different rules and effects over your resources and stay compliant with your corporate standards and service-level agreements (SLAs)?
+
+* Azure Policy
+* Azure Blueprints
+* Azure Security Center
+* Role-based Access Control
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Azure Policy is a service in Azure that you use to create, assign, and, manage policies. These policies enforce different rules and effects over your resources, so those resources stay compliant with your corporate standards and service-level agreements (SLAs).
+    </p>
+    </details>
+
+1. Which of the following services provides up-to-date status information about the health of Azure services?
+
+* Compliance Manager
+* Azure Monitor
+* Service Trust Portal
+* Azure Service Health
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Azure Service Health is the correct answer, because it provides you with a global view of the health of Azure services. With Azure Status, a component of Azure Service Health, you can get up-to-the-minute information on service availability.
+    </p>
+    </details>
+
+1. Where can you obtain details about the personal data Microsoft processes, how Microsoft processes it, and for what purposes?
+
+* Microsoft Privacy Statement
+* Compliance Manager
+* Azure Service Health
+* Trust Center
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    You can obtain the details about how Microsoft uses personal data in the Microsoft Privacy Statement.
+    </p>
+    </details>
+
+
+</p>
+</details>
+
+---
