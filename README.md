@@ -1398,3 +1398,152 @@ Azure provides two primary services to monitor the health of your apps and resou
 </details>
 
 ---
+
+## Control and organize Azure resources with Azure Resource Manager
+
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
+### Learning Objectives
+
+* Use resource groups to organize Azure resources
+* Use tags to organize resources
+* Apply policies to enforce standards in your Azure environments
+* Use resource locks to protect critical Azure resources from accidental deletion
+
+### Principles of resource groups
+
+A **resource group** is a logical container for resources deployed on Azure. All resources must be in a resource group and a resource can only be a member of a single resource group. Resource groups can't be nested.
+
+They help to organize services, so we are interested in created *logical groups*. Moreover, deleting a RG will delete all services that it contains. They are also a scope for applying role-based access control (RBAC) permissions.
+
+### Use resource groups for organization
+
+It is important to apply naming conventions to both the RG and the contained services. We could organize resource groups by service, environment or authorization level, as they are a scope of RBAC. Furthemore, it may be useful organizing RG by life-cycle or billing.
+
+### Use tagging to organize resources
+
+Tags are name/value pairs of text data that you can apply to resources and resource groups. Tags allow you to associate custom details about your resource, in addition to the standard Azure properties a resource has:
+
+* department (like finance, marketing, and more)
+* environment (prod, test, dev),
+* cost center
+* life cycle and automation (like shutdown and startup of virtual machines).
+
+Apart from organization utilities, tags could also be used to automate or schedule activies such as shutting down VMs. By adding the tag `shutdown:6PM` tag to a group of VMs, we could set up an activity that filters VMs by that.
+
+### Use policies to enforce standards
+
+For example, we could create policies that force the existance of a tag on a resource or restrict which types of VMs sizes can be deployed.
+
+### Secure resources with role-based access control
+
+Here are some best practices you should use when setting up resources.
+
+* Segregate duties within your team and grant only the amount of access to users that they need to perform their jobs. Instead of giving everybody unrestricted permissions in your Azure subscription or resources, allow only specific actions at a particular scope.
+* When planning your access control strategy, grant users the lowest privilege level that they need to do their work.
+* Use Resource Locks to ensure critical resources aren't modified or deleted.
+
+### Use resource locks to protect resources
+
+Resource locks are a setting that can be applied to any resource to block modification or deletion. Resource locks can set to either Delete (all operations but delete are allowed) or Read-only (only allows read operations, blocking any modification).
+
+### Knowledge Check
+
+1. Tags can be applied to any type of resource on Azure
+
+* True
+* False
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    False
+    </p>
+    </details>
+
+1. Tags applied at a resource group level are propagated to resources within the resource group.
+
+* True
+* False
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    False
+    </p>
+    </details>
+
+1. Which of the following is not a feature of resource groups?
+
+* Resources can be in only one resource group.
+* Resources can be moved from one resource group to another resource group.
+* Resource groups can be nested.
+* Role-based access control can be applied to the resource group.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Resource groups can be nested.
+    </p>
+    </details>
+
+1. Which of the following might be a good usage of tags?
+
+* Using tags to associate a cost center with resources for internal chargeback
+* Using tags in conjunction with Azure Automation to schedule maintenance windows
+* Using tags to store environment and department association
+* All of the above are good ways to use tags
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    All of the above are good ways to use tags
+    </p>
+    </details>
+
+1. Which of the following would be the most efficient way to ensure a naming convention was followed across your subscription?
+
+* Send out an email with the details of your naming conventions and hope it is followed
+* Create a policy with your naming requirements and assign it to the scope of your subscription
+* Give all other users except for yourself read-only access to the subscription. Have all requests to create resources sent to you so you can review the names being assigned to resources, and then create them.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Create a policy with your naming requirements and assign it to the scope of your subscription
+    </p>
+    </details>
+
+1. Which of the following would be good to put a resource lock on?
+
+* An ExpressRoute circuit with connectivity back to your on-premises network
+* A non-production virtual machine used to test occasional application builds
+* A storage account used to temporarily store images processed in a development environment
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    An ExpressRoute circuit with connectivity back to your on-premises network
+    </p>
+    </details>
+
+</p>
+</details>
+
+---
