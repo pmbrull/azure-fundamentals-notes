@@ -297,7 +297,7 @@ Show content
 </summary>
 <p>
 
-### Learning Content
+### Learning Objectives
 
 * Physical infrastructure of Azure.
 * Understand the service level agreements provided by Azure.
@@ -597,7 +597,7 @@ Show content
 </summary>
 <p>
 
-### Learning objectives
+### Learning Objectives
 
 * Identify compute options in Azure.
 * Select compute options that are appropriate for your business.
@@ -731,7 +731,7 @@ Show content
 </summary>
 <p>
 
-### Learning content
+### Learning Objectives
 
 * Survey the data storage options in Azure
 * Discover how Azure data storage can meet your business demands
@@ -1241,7 +1241,7 @@ Show content
 </summary>
 <p>
 
-### Learning Content
+### Learning Objectives
 
 * Apply policies to control and audit resource creation
 * Learn how role-based security can fine-tune access to your resources
@@ -1540,6 +1540,263 @@ Resource locks are a setting that can be applied to any resource to block modifi
     </summary>
     <p>
     An ExpressRoute circuit with connectivity back to your on-premises network
+    </p>
+    </details>
+
+</p>
+</details>
+
+---
+
+## Predict costs and optimize spending for Azure
+
+<details>
+<summary> 
+Show content
+</summary>
+<p>
+
+### Learning Objectives
+
+* Learn the different options you have to purchase Azure services
+* Estimate costs with the Azure pricing calculator
+* Predict and optimize costs with Azure Cost Management and Azure Advisor
+* Apply best practices for saving on infrastructure costs
+* Apply best practices for saving on licensing costs
+
+### Purchase Azure products and services
+
+There are three main customer types:
+
+* **Enterprise**: Customers commit to spend a negotiated amount on services, usually paid annually. They also get customized pricings.
+* **Web direct**: Customers pay general public prices and their monthly billing and payments occur through Azure website.
+* **Cloud Solution Provider**: Microsoft partner companies that a customer hires to build solution on Azure. Payment and billing occur through the CSP.
+
+#### Usage meters
+
+Meters track the resource's usage used to calculate the bill. Usually they are compute hours, IP addresses, data transfer, Disk operations...
+
+> OBS: De-allocating a VM is not the same as deleting a VM. De-allocation means the VM is not assigned to a CPU or network in a datacenter. However, your persistent disks remain, and the resource is present in your subscription. It's similar to turning off your physical computer.
+
+### Factors affecting costs
+
+There are different aspects which affect on the costs:
+
+* **Resource type**, as costs are resource specific, so the usage meter varies. The usage that a meter tracks correlates to a number of billable units.
+* **Services**: Rates and billings vary depending on the customer types.
+* **Location**, based on the resource popularity, demand, and local infrastructure costs.
+* **Azure Billing Zones**: Most of the inbound data transfers (data going into Azure datacenters) are free, but different charges will be applied on outbound data based on Billing Zones. A Zone is a geographical grouping of Azure Regions for billing purposes, for example Zone 1 is US, Europe, Canada, UK and France.
+
+### Estimate costs with the Azure pricing calculator
+
+Free web-based tool that allows you to input Azure services and modify properties and options of the services. It outputs the costs per service and total cost for the full estimate.
+
+### Predict and optimize with Cost Management and Azure Advisor
+
+Azure Advisor is a free service built into Azure that provides recommendations on high availability, security, performance, and cost. Advisor analyzes your deployed services and looks for ways to improve your environment across those four areas. 
+
+* **Reduce costs by eliminating unprovisioned Azure ExpressRoute circuits**: Recommends deleting circuits not provisioned for more than 1 month.
+* **Buy reserved instances to save money over pay-as-you-go**: This will review your virtual machine usage over the last 30 days and determine if you could save money in the future by purchasing reserved instances.
+* **Right-size or shutdown underutilized virtual machines**: This monitors your virtual machine usage for 14 days and then identifies underutilized virtual machines.
+
+#### Azure Cost Management
+
+Azure Cost Management is another free, built-in Azure tool that can be used to gain greater insights into where your cloud money is going. You can get historical breakdowns, set budgets, schedule reports and analyze cost areas.
+
+### Estimate the Total Cost of Ownership with the Azure TCO calculator
+
+If you are starting to migrate to the cloud, a useful tool you can use to predict your cost savings is the Total Cost of Ownership (TCO) calculator. You'll need to define your workloads, such as the details of current servers and databases infrastructure, then adjust some assumptions on storage, hardware and network costs among others and finally view the report. The report allows to compare cloud vs. on-premises costs.
+
+### Save on infrastructure costs
+
+There are some ways in which customers can save on costs:
+
+* **Azure Credits**, which can be obtained for specific subscription levels.
+* **Use spending limits** prevent you from exhausting the credit on your account within each billing period. The spending limit feature is specific to subscriptions that include a monthly Azure credit allotment. It is not available on pay-only subscriptions.
+* **Use reserved instances** purchased in one-year or three-year terms, with payment required for the full term up front.
+* **Choose low-cost locations and regions**
+* **Research available cost-saving offers**
+* **Right-size underutilized virtual machines** by getting insights from Azure Cost Management and Azure Advisor.
+* **Deallocate virtual machines in off hours**
+* **Delete unused virtual machines**
+* **Migrate to PaaS or SaaS services**, which provide substantial savings in both resources and operational costs.
+
+### Save on licensing costs
+
+* **Linux vs. Windows**: Costs can vary depending on the OS you use.
+* **Azure Hybrid Benefit for Windows Server**: letting customers repurpose their Windows licenses.
+* **Azure Hybrid Benefit for SQL Server**
+* **Use Dev/Test subscription offers** to save cost on non-production environments.
+* **Bring your own SQL Server license**
+* **Use SQL Server Developer Edition**
+* **Use constrained instance sizes for database workloads**
+
+
+### Knowledge Check
+
+1. Which tab of the Azure pricing calculator will you use to put together your estimate?
+
+* Estimate
+* Products
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Products: This tab has all the Azure services listed and is where you'll add or remove services to get your estimate.
+    </p>
+    </details>
+
+1. True or false: You can share your estimate through an Excel spreadsheet or through a URL.
+
+* True
+* False
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Clicking Export at the bottom of the estimate will export an Excel spreadsheet that you can share, or you can click Share to get a URL link that you can share with your team.
+    </p>
+    </details>
+
+1. Azure Advisor provides recommendations for _________.
+
+* Costs only
+* High availability, security, performance, and cost
+* High availability, performance, and cost
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Azure Advisor provides recommendations on high availability, security, performance, and cost.
+    </p>
+    </details>
+
+1. Azure Cost Management allows you to _________.
+
+* See historical breakdowns of what services you are spending your money on.
+* See estimates of what your services might cost if you make a change.
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Cost Management analyzes where you are historically spending your money and can track it against budgets you have set.
+    </p>
+    </details>
+
+1. Which one of these is not a cost-saving solution?
+
+* Deallocate virtual machines during off hours.
+* Use Azure Reserved Virtual Machine Instances.
+* Load balance your virtual machines for incoming messages.
+* Right-size underutilized virtual machines.
+
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Load balancing is used for performance optimization not cost savings. 
+    </p>
+    </details>
+
+1. True or false: PaaS is generally less expensive than IaaS.
+
+* True
+* False
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    IaaS requires Azure to dedicate resources while PaaS give Azure more flexibility in how services are delivered. This means Azure can fill and operate hardware efficiently and therefore offer PaaS services at a savings over IaaS.
+    </p>
+    </details>
+
+1. True or false: If you already have Windows Server licenses, you have to pay for them again on Azure.
+
+* True
+* False
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    False: Under certain circumstances, you can utilize the hybrid benefit for Windows Server and pay only the Linux rate.
+    </p>
+    </details>
+
+1. True or false: Azure has money-saving options for test and development servers.
+
+* True
+* False
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    The Azure Enterprise Dev/Test and Azure Pay-As-You-Go Dev/Test benefits give you several discounts, most notably for Windows workloads, eliminating license charges and billing you only at the Linux rate for virtual machines. This also applies to SQL Server and any other Microsoft software that is covered under a Visual Studio subscription.
+    </p>
+    </details>
+
+1. Which one of the following is used to determine Azure costs for each billing period?
+
+* The Azure website
+* Number of created virtual machines
+* The Azure pricing calculator
+* Usage meters
+
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Azure is billed according to your consumption based on monthly usage meters.
+    </p>
+    </details>
+
+1. Which of the following is a factor affecting costs?
+
+* Global infrastructure
+* Location
+* Availability zone
+
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    The location you place your resources will vary the price for the resource.
+    </p>
+    </details>
+
+1. Complete the following sentence. As an Azure customer, Azure Reservations offer discounted prices if you _________
+
+* Pay in advance
+* Provision many resources
+* Have a free account
+* Set Spending Limits
+
+
+    <details>
+    <summary> 
+    Answer
+    </summary>
+    <p>
+    Azure Reservations offer discounted prices on certain Azure products and resources. To get a discount, you reserve products and resources by paying in advance. You can prepay for one or three year's of usage of certain Azure resources.
     </p>
     </details>
 
